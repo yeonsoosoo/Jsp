@@ -13,6 +13,7 @@
 	//뷰를 만들기 전 총점과 평균을 구하기 위한 변수
 	int total;
 	float avg;
+	boolean check;
 %>
 <html>
 <head>
