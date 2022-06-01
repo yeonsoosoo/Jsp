@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-
+//MVC패턴 학습
 /**
  * Servlet implementation class FileUploadAction
  */
