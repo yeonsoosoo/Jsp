@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+
 /**
  * Servlet implementation class FileUploadAction
  */
@@ -48,7 +49,7 @@ public class FileUploadAction extends HttpServlet {
 		//request 정보는 문자열만 수신이 가능하기 때문에 사진도 받을 수 있게 정보를 위임
 		//path 업로드 경로, max_size 최대 업로드 용량, 수신시 인코딩 타입 -> 여기서 작성했으면 셋캐릭터 인코딩 안써두됨.
 		//new DefaultFileRenamePolicy() 중복된 파일명을 알아서 변경(spring은 없음)
-		MultipartRequest mr = new MultipartRequest(request, path, max_size, "utf-8", new DefaultFileRenamePolicy());
+		MultipartRequest mr = new MultipartRequest(request, path, max_size, "utf-8", new DefaultFileRenamePolicy()); 
 		
 		
 		String filename = "no_file";

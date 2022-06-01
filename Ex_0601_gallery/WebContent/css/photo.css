@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+* {
+	margin : 0;
+	padding : 0;
+}
+
+#main_box h1 { text-align:center;
+				text-shadow: 3px 3px 5px gray;
+				color:white;}
+				
+#main_box {
+			width: 800px;
+			margin: 0 auto;
+		  }
+		  
+#photo_box {
+			margin: 20px auto;
+			width: 710px;
+			height: 665px;
+			border: 1px solid blue;
+			padding : 10px;
+			overflow : auto; /* 스크롤이 필요할 때 보여주는 옵션 */
+			box_shadow: 5px 5px 10px gray;
+}
+
+.photo_type{
+			width:150px;
+			height:200px;
+			border: 1px solid green;
+			float: left;
+			margin: 10px;
+}
+
+.photo_type img{
+				display:block;
+				margin:auto;
+				width:98%;
+				height:150px;
+}
+
+
+
