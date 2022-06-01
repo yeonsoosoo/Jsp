@@ -51,7 +51,7 @@ public class FileUploadAction extends HttpServlet {
 		//new DefaultFileRenamePolicy() 중복된 파일명을 알아서 변경(spring은 없음)
 		MultipartRequest mr = new MultipartRequest(request, path, max_size, "utf-8", new DefaultFileRenamePolicy()); 
 		
-		
+		//빈칸으로 둬도 상관없음
 		String filename = "no_file";
 		
 		//업로드가 완료된 파일의 정보를 얻어옴.
