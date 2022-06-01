@@ -19,7 +19,7 @@
 <head>
 	<style>
 		table {
-			width:50%;
+			width:60%;
 			text-align: center;
 		}
 	</style>
