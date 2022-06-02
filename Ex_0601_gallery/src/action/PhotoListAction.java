@@ -16,6 +16,7 @@ import vo.PhotoVO;
 /**
  * Servlet implementation class PhotoListAction
  */
+//포토갤러리 예제
 //매핑 -> 파일명은 photoListAction이지만, 주소창에는 list.do로 출력됨
 @WebServlet("/list.do")
 public class PhotoListAction extends HttpServlet {
