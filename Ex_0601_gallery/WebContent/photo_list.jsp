@@ -47,6 +47,10 @@
 				location.href = "list.do";
 			}
 		}
+		
+		function download(filename) {
+			location.href="download.do?dir=/upload/&filename="+filename;
+		}
 	</script>
 
 </head>
@@ -71,7 +75,8 @@
 					
 					
 					<div align="center">
-						<input type="password" name="pwd2" size="10">
+						<input type="password" name="pwd2" size="5">
+						<input type="button" value="down" onclick="download('${vo.filename}')">
 						<input type="button" value="삭제" onclick="del(this.form)">
 					</div>
 				</form>
