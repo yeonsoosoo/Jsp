@@ -30,6 +30,7 @@
 			//문자열 형태의 json데이터를 실제 json데이터로 파싱
 			var json = eval(data);
 			
+			//여기 return이 들어가면 새로고침을 해야 화면에 표시되므로 return 넣기 X
 			if(json[0].param == 'yes') {
 				alert("삭제 성공");
 			} else {
