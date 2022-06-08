@@ -41,4 +41,18 @@ public class GogekDAO {
 		sqlSession.close();
 		return list;
 	}
+	
+	//검색 조건에 맞는 목록 조회
+	public List<GogekVO> select(String search) {
+		//SqlSession : DB에 쿼리문을 실제로 요청하는 객체
+		SqlSession sqlSession = factory.openSession();
+
+		//DB접근을 통해 얻어온 결과를 list에 저장
+		List<GogekVO> list =sqlSession.selectList("gogek.gogek_list_search", search);
+				
+		//DB접근을 위해 사용한 sqlSession은 마지막에 꼭 닫아줘야함
+		//conn,pstmt,rs를 close()하는 내용이 포함되어있다.
+		sqlSession.close();
+		return list;
+		}
 }

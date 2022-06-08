@@ -7,6 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="gogek_list" resultType="vo.GogekVO">
 	select * from gogek
 </select>
+
+<!-- 스트링은 패키지까지 안써줘도 되긴함 -->
+<select id="gogek_list_search" resultType="vo.GogekVO" parameterType="java.lang.String">
+	select * from gogek where goaddr like '%'||#{search}||'%'
+</select>
  
 </mapper>
 

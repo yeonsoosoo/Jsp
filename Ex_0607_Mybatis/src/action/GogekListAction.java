@@ -28,8 +28,30 @@ public class GogekListAction extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 부서목록 가져오기
-		List<GogekVO> list = GogekDAO.getInstance().select();
+
+		//gogek_list.do -> null
+		//gogek_list.do?search= -> empty
+		//한글이 깨지지 않게하기 위함
+		request.setCharacterEncoding("utf-8");
+		
+		String search = "all";
+		String str_search = request.getParameter("search");
+		
+		//정상적으로 값이 들어온 경우
+		if(str_search != null && !str_search.isEmpty()) {
+			search = str_search;
+		}
+		
+		//조회하고 목록 가져오기
+		List<GogekVO> list = null;
+		
+		//부서목록 가져오기
+		if(search.equals("all")) {
+			list = GogekDAO.getInstance().select();
+		} else {
+			list = GogekDAO.getInstance().select(search);
+		}
+		
 
 		// list 바인딩
 		request.setAttribute("list", list);
