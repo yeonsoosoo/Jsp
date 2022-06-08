@@ -28,7 +28,7 @@ public class SawonListAction extends HttpServlet {
 		int deptno = 0;
 		String str_deptno = request.getParameter("deptno");
 		
-		//sawon_list.do? -> null : 메모리도 점유 x
+		//sawon_list.do -> null : 메모리도 점유 x
 		//sawon_list.do?dept= -> empty : 값이 없긴한데 메모리 점유
 		//0~50까지의 deptno 값을 받았을 때
 		if(str_deptno != null && !str_deptno.isEmpty()) {
