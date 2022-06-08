@@ -8,6 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	select * from sawon
 </select>
 
+<!-- 파라미터 전달받음, #{}안에 아무거나 적어도 전달이 되지만, 가능하면 전달변수명과 같게 -->
+<select id="sawon_list_no" resultType="vo.SawonVO" parameterType="int">
+	select * from sawon where deptno=#{deptno}
+</select>
+
 </mapper>
 
 

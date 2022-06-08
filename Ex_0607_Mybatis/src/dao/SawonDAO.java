@@ -42,4 +42,20 @@ public class SawonDAO {
 		sqlSession.close();
 		return list;
 	}
+	
+	//메서드 오버로딩
+	//부서별 사원 목록
+	public List<SawonVO> select(int deptno) {
+		//SqlSession : DB에 쿼리문을 실제로 요청하는 객체
+		SqlSession sqlSession = factory.openSession();
+
+		//파라미터 전달은 하나만 가능함.
+		//DB접근을 통해 얻어온 결과를 list에 저장
+		List<SawonVO> list =sqlSession.selectList("sawon.sawon_list_no", deptno);
+		
+		//DB접근을 위해 사용한 sqlSession은 마지막에 꼭 닫아줘야함
+		//conn,pstmt,rs를 close()하는 내용이 포함되어있다.
+		sqlSession.close();
+		return list;
+	}
 }
