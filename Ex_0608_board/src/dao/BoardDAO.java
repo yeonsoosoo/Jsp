@@ -56,4 +56,13 @@ public class BoardDAO {
 		sqlSession.close();
 		return vo;
 	}
+	
+	//조회수 증가
+	public int update_readhit(int idx) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.update("b.update_readhit", idx);
+	
+		sqlSession.close();
+		return res;
+	}
 }
