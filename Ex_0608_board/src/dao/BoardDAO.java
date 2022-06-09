@@ -36,4 +36,24 @@ public class BoardDAO {
 		
 		return list;
 	}
+	
+	//게시글 추가
+	public int insert(BoardVO vo) {
+		//openSession(true)를 적어주면 자동 커밋을 해준다는 의미
+		SqlSession sqlSession = factory.openSession(true);
+		
+		int res = sqlSession.insert("b.board_insert", vo);
+		
+		sqlSession.close();
+		return res;
+	}
+	
+	//한가지 글 조회
+	public BoardVO selectOne(int idx) {
+		SqlSession sqlSession = factory.openSession();
+		BoardVO vo = sqlSession.selectOne("b.board_one",idx);
+		
+		sqlSession.close();
+		return vo;
+	}
 }

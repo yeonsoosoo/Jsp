@@ -4,10 +4,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b">
 <!-- mapper : DB에 쿼리문을 요청하고 결과를 돌려받는 속성파일 -->
-<select id="board_list" resultType="vo.BoardVO">
+<select id="board_list" resultType="board">
+	<!-- sql문에 세미콜론 절대 금지 -->
 	select * from board ORDER BY REF DESC, STEP
 </select>
+
+<!-- 파라미터 타입을 별칭을 지정해줬기 때문에 board라고 적어도됨 -->
+<!-- 새로운 게시물 작성(댓글아님) -->
+<!-- insert,update,delete에서는 resultType을 가질 수 없다(자동으로 정수형태로 지정) -->
+<insert id="board_insert" parameterType="vo.BoardVO">
+	insert into board values(
+		seq_board_idx.nextval, 
+		#{name},
+		#{subject},
+		#{content},
+		#{pwd},
+		#{ip},
+		sysdate,
+		0,
+		seq_board_idx.currval,
+		0,
+		0
+	)
+</insert>
  
+ <!-- idx에 해당하는 게시글 한 건 조회 -->
+ <select id="board_one" resultType="board" parameterType="int">
+ 	select * from board where idx = #{idx}
+ </select>
 </mapper>
 
 

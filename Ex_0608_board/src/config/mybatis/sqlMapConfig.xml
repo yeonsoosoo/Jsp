@@ -22,7 +22,5 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</environments>
 	<mappers>
 		<mapper resource="config/mybatis/mapper/board.xml" /> 
-		<mapper resource="config/mybatis/mapper/sawon.xml" /> 
-		<mapper resource="config/mybatis/mapper/gogek.xml" /> 
 	</mappers>
 </configuration>
