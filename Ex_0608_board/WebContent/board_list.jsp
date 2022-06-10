@@ -40,13 +40,43 @@
 					<c:forEach begin="1" end="${vo.depth }">&nbsp;</c:forEach>
 					<!-- 댓글기호 -->
 					<c:if test="${vo.depth ne 0 }">ㄴ</c:if>
-					<a href="view.do?idx=${vo.idx}">
-						<font color="black">${vo.subject }</font>
-					</a>
+				<c:if test="${vo.del_info ne -1 }">
+						<a href="view.do?idx=${vo.idx}">
+							<font color="black">${vo.subject }</font>
+						</a>
+				</c:if>
+				
+				<c:if test="${vo.del_info eq -1 }">
+					<font color="gray">${vo.subject }</font>
+				</c:if>
 				</td>
+				<c:if test="${vo.del_info ne -1 }">
 				<td>${vo.name }</td>
+				</c:if>
+				
+				<c:if test="${vo.del_info eq -1 }">
+				<td><font color="gray">${vo.name }</font></td>
+				</c:if>
+				
+				<!-- 삭제되지 않은 게시물은 정상적으로 표시 -->
+				<c:if test="${vo.del_info ne -1 }">
 				<td>${fn:split(vo.regdate, ' ')[0] }</td>
+				</c:if>
+				
+				<!-- 삭제된 게시물은 날짜를 unknown으로 표시 -->
+				<c:if test="${vo.del_info eq -1 }">
+				<td><font color="gray">unknown</font></td>
+				</c:if>
+				
+				<!-- 삭제되지 않은 조회수는 정상적으로 표시 -->
+				<c:if test="${vo.del_info ne -1 }">
 				<td>${vo.readhit }</td>
+				</c:if>
+				
+				<!-- 삭제된 조회수는 unknown으로 표시 -->
+				<c:if test="${vo.del_info eq -1 }">
+				<td><font color="gray">unknown</font></td>
+				</c:if>
 			</tr>
 		</c:forEach>
 		

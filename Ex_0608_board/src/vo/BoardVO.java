@@ -1,8 +1,15 @@
 package vo;
 
 public class BoardVO {
-	private int idx, readhit,ref,step,depth; //글번호, 조회수, 기준글 번호, 댓글의 순서(수직), 댓글의 깊이
+	private int idx, readhit,ref,step,depth, del_info; //글번호, 조회수, 기준글 번호, 댓글의 순서(수직), 댓글의 깊이
 	private String name, subject, content, pwd, ip, regdate; //작성자 이름, 제목, 내용, 비밀번호, ip, 작성일자
+	
+	public int getDel_info() {
+		return del_info;
+	}
+	public void setDel_info(int del_info) {
+		this.del_info = del_info;
+	}
 	
 	public int getIdx() {
 		return idx;

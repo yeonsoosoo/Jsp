@@ -6,9 +6,49 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="js/httpRequest.js"></script>
+
 <script>
 	function reply() {
 		location.href="reply_form.jsp?idx=${vo.idx}";
+	}
+	
+	function del() {
+		if(!confirm("삭제하시겠습니까?")) {
+			//아니요 누를경우
+			return;
+		}
+		
+		var pwd = ${vo.pwd}; //원본 비밀번호
+		var c_pwd = document.getElementById("c_pwd").value; //삭제 시 입력한 비밀번호
+		
+		//비밀번호가 디비에 정보랑 일치하지않다면..
+		if(pwd != c_pwd) {
+			alert("비밀번호 불일치");
+			return;
+		} 
+		
+		//AJAX 활용
+		var url = "del.do";
+		var param = "idx=${vo.idx}";
+		
+		sendRequest(url, param, delCheck, "POST");
+	}
+	
+	function delCheck() {
+		if(xhr.readyState == 4 && xhr.status == 200) {
+			var data = xhr.responseText;
+			//[{'param' :'yes'}] 문자열 형태로 데이터를 받아옴
+			
+			var json = eval(data);
+			
+			if(json[0].param == 'yes') {
+				alert("삭제 성공");
+				location.href="board_list.do";
+			} else {
+				alert("삭제 실패");
+			}
+		}
 	}
 </script>
 </head>
@@ -40,6 +80,11 @@
 			<!-- pre를 사용한 이유는 줄바꿈을 하기위함. -->
 			<td width="500px" height="200px"><pre>${vo.content}</pre></td>
 		</tr> 
+		
+		<tr>
+			<th>비밀번호</th>
+			<td><input type="password" id="c_pwd"></td>
+		</tr>
 		
 		<tr>
 			<td colspan="2">

@@ -82,4 +82,12 @@ public class BoardDAO {
 		sqlSession.close();
 		return res;
 	}
+	
+	public int del_update(BoardVO vo) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.update("b.del_update", vo);
+		
+		sqlSession.close();
+		return res;
+	}
 }

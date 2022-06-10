@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		0,
 		seq_board_idx.currval,
 		0,
+		0,
 		0
 	)
 </insert>
@@ -43,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	update board set step = step+1 where ref = #{ref} and step > #{step}
  </update>
  
+ <!-- 댓글 달기 -->
  <insert id="board_reply" parameterType="board">
  	insert into board values(
  		seq_board_idx.nextval, 
@@ -55,9 +57,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		0,
 		#{ref},
 		#{step},
-		#{depth}
+		#{depth},
+		0
  	)
  </insert>
+ 
+ <!-- 게시글이 삭제된 것처럼 업데이트 -->
+ <update id="del_update" parameterType="board">
+ 	update board set subject = #{subject},
+ 					 name = #{name},
+ 					 del_info = -1
+ 	where idx = #{idx}
+ </update>
 </mapper>
 
 
