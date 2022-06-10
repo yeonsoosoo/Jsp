@@ -32,5 +32,4 @@ public class BoardListAction extends HttpServlet {
 		RequestDispatcher disp = request.getRequestDispatcher("board_list.jsp");
 		disp.forward(request, response);
 	}
-
 }
