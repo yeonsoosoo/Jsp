@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,11 +43,16 @@
 		
 		<tr>
 			<td colspan="2">
-			<!-- 목록보기 -->
+				<!-- 목록보기 -->
 				<img src="img/btn_list.gif" onclick="location.href='board_list.do'">
-			<!-- 답변 -->
-				<img src="img/btn_reply.gif" onclick="reply();">
-			<!-- 삭제 -->	
+				
+				<!-- depth가 1보다 작다면 답글아이콘이 생기고, 아닌 경우 답글을 달지 못함 -->
+				<c:if test="${vo.depth lt 1 }">
+					<!-- 답변 -->
+					<img src="img/btn_reply.gif" onclick="reply();">
+				</c:if>
+				
+				<!-- 삭제 -->	
 				<img src="img/btn_delete.gif" onclick="del();">
 			</td>
 		</tr>
