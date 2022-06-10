@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function reply() {
+		location.href="reply_form.jsp?idx=${vo.idx}";
+	}
+</script>
 </head>
 <body>
 	<table border="1">
@@ -31,6 +36,7 @@
 		
 		<tr>
 			<th>내용</th>
+			<!-- pre를 사용한 이유는 줄바꿈을 하기위함. -->
 			<td width="500px" height="200px"><pre>${vo.content}</pre></td>
 		</tr> 
 		

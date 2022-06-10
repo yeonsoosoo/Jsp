@@ -65,4 +65,21 @@ public class BoardDAO {
 		sqlSession.close();
 		return res;
 	}
+	
+	//조회수 증가
+	public int update_step(BoardVO vo) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.update("b.update_step", vo);
+		
+		sqlSession.close();
+		return res;
+	}
+	
+	public int reply(BoardVO vo) {
+		SqlSession sqlSession = factory.openSession(true);
+		int res = sqlSession.insert("b.board_reply", vo);
+		
+		sqlSession.close();
+		return res;
+	}
 }
