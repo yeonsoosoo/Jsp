@@ -12,7 +12,7 @@ public class Common {
 		//페이지 메뉴 수
 		//<- 1 2 3 ->
 		
-		public final static int BLOCKPAGE = 3;
+		public final static int BLOCKPAGE = 5;
 	}
 	
 	//공지사항용

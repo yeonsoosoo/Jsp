@@ -41,7 +41,7 @@
 					<!-- 댓글기호 -->
 					<c:if test="${vo.depth ne 0 }">ㄴ</c:if>
 				<c:if test="${vo.del_info ne -1 }">
-						<a href="view.do?idx=${vo.idx}">
+						<a href="view.do?idx=${vo.idx}&page=${param.page}">
 							<font color="black">${vo.subject }</font>
 						</a>
 				</c:if>
@@ -82,7 +82,7 @@
 		
 		<tr>
 			<td colspan="5" align="center">
-						◀ 1 2 3 ▶
+						${pageMenu }
 			</td>
 		</tr>
 		

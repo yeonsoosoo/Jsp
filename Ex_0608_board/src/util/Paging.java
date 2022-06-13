@@ -17,7 +17,8 @@ public class Paging {
 		
 		
 		isPrevPage=isNextPage=false;
-		//입력된 전체 자원을 통해 전체 페이지 수를 구한다..
+		//입력된 전체 자원을 통해 전체 페이지 수를 구한다
+
 		totalPage = (int)(rowTotal/blockList);
 		if(rowTotal%blockList!=0)totalPage++;
 		
@@ -47,17 +48,17 @@ public class Paging {
 			sb.append("<a href ='"+pageURL+"?page=");
 			//sb.append(nowPage - blockPage);
 			sb.append( startPage-1 );
-			sb.append("'>◀</a>");
+			sb.append("'><img src='img/btn_prev.gif'></a>");
 		}
 		else
-			sb.append("◀");
+			sb.append("<img src='img/btn_prev.gif'>");
 		
 //------페이지 목록 출력 -------------------------------------------------------------------------------------------------
-		sb.append("|");
+		sb.append(" ");
 		for(int i=startPage; i<= endPage ;i++){
 			if(i>totalPage)break;
 			if(i == nowPage){ //현재 있는 페이지
-				sb.append("&nbsp;<b><font color='#91b72f'>");
+				sb.append("&nbsp;<b><font color='#ff0000'>");
 				sb.append(i);
 				sb.append("</font></b>");
 			}
@@ -70,7 +71,7 @@ public class Paging {
 			}
 		}// end for
 		
-		sb.append("&nbsp;|");
+		sb.append("&nbsp; ");
 		
 //-----그룹페이지처리 다음 ----------------------------------------------------------------------------------------------
 		if(isNextPage){
@@ -81,10 +82,10 @@ public class Paging {
 			else
 				nowPage = nowPage+blockPage;
 			sb.append(nowPage);*/
-			sb.append("'>▶</a>");
+			sb.append("'><img src='img/btn_next.gif'></a>");
 		}
 		else
-			sb.append("▶");
+			sb.append("<img src='img/btn_next.gif'>");
 //---------------------------------------------------------------------------------------------------------------------	    
 
 		return sb.toString();

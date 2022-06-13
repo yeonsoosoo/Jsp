@@ -17,6 +17,7 @@
 	<form name="f" method="post" action="reply.do">
 	<!-- param.idx는 주소창의 idx=oo를 받아옴 -->
 	<input type="hidden" name="idx" value="${param.idx }">
+	<input type="hidden" name="page" value="${param.page }">
 		<table border="1">
 			<caption>:::댓글 작성:::</caption>
 			<tr>

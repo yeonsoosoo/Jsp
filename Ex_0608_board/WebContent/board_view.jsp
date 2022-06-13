@@ -10,7 +10,7 @@
 
 <script>
 	function reply() {
-		location.href="reply_form.jsp?idx=${vo.idx}";
+		location.href="reply_form.jsp?idx=${vo.idx}&page=${param.page}";
 	}
 	
 	function del() {
@@ -44,7 +44,7 @@
 			
 			if(json[0].param == 'yes') {
 				alert("삭제 성공");
-				location.href="board_list.do";
+				location.href="board_list.do?page=${param.page}";
 			} else {
 				alert("삭제 실패");
 			}
@@ -89,7 +89,7 @@
 		<tr>
 			<td colspan="2">
 				<!-- 목록보기 -->
-				<img src="img/btn_list.gif" onclick="location.href='board_list.do'">
+				<img src="img/btn_list.gif" onclick="location.href='board_list.do?page=${param.page}'">
 				
 				<!-- depth가 1보다 작다면 답글아이콘이 생기고, 아닌 경우 답글을 달지 못함 -->
 				<c:if test="${vo.depth lt 1 }">

@@ -4,9 +4,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="b">
 <!-- mapper : DB에 쿼리문을 요청하고 결과를 돌려받는 속성파일 -->
-<select id="board_list" resultType="board">
+
+<!-- 페이지별 게시물 조회 -->
+<select id="board_list" resultType="board" parameterType="java.util.HashMap">
 	<!-- sql문에 세미콜론 절대 금지 -->
-	select * from board ORDER BY REF DESC, STEP
+	select * 
+	from (select rank() over(order by ref desc, step) no, b.*
+	 	 from board b)
+	where no between #{start} and #{end}
+</select>
+
+<!-- 전체 게시물 개수 조회 -->
+<select id="board_count" resultType="int">
+	select count(*) from board	
 </select>
 
 <!-- 파라미터 타입을 별칭을 지정해줬기 때문에 board라고 적어도됨 -->
